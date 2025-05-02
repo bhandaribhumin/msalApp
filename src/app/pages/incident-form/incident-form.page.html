@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Create Incident</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input [(ngModel)]="incident.title" name="title" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea [(ngModel)]="incident.description" name="description" required></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Priority</ion-label>
+      <ion-select [(ngModel)]="incident.priority" name="priority" required>
+        <ion-select-option value="High">High</ion-select-option>
+        <ion-select-option value="Medium">Medium</ion-select-option>
+        <ion-select-option value="Low">Low</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Assign To</ion-label>
+      <ion-input [(ngModel)]="searchQuery" name="searchQuery" (ionChange)="searchUsers()"></ion-input>
+    </ion-item>
+
+    <ion-list *ngIf="searchResults.length > 0">
+      <ion-item *ngFor="let user of searchResults" (click)="selectUser(user)">
+        <ion-label>{{user.displayName}}</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" type="submit" class="ion-margin">
+      Submit Incident
+    </ion-button>
+  </form>
+</ion-content>

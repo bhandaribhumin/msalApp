@@ -1,9 +1,19 @@
-import type { CapacitorConfig } from '@capacitor/cli';
+import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'msalApp',
-  webDir: 'www'
+  appId: 'com.app.msal.example',
+  appName: 'Msal Example',
+  webDir: 'www',
+  server: {
+    iosScheme: 'msauth',
+    cleartext: true
+  },
+  ios: {
+    contentInset: 'automatic',
+    preferredContentMode: 'mobile',
+    scheme: 'msauth',
+    backgroundColor: '#ffffff'
+  }
 };
 
 export default config;
